@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banking Assistant Chatbot</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f6ff;
+        }
+
+        .chatbox {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        #messages {
+            height: 250px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 75%;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="chatbox">
+    <h2>Banking Assistant Chatbot</h2>
+
+    <div id="messages">
+        <p><b>Bot:</b> Hello! Ask about balance, loans, transactions, or branch.</p>
+    </div>
+
+    <input type="text" id="userInput" placeholder="Type your question">
+    <button onclick="send()">Send</button>
+</div>
+
+<script>
+function send() {
+    let input = document.getElementById("userInput").value.toLowerCase();
+    let chat = document.getElementById("messages");
+
+    chat.innerHTML += "<p><b>You:</b> " + input + "</p>";
+
+    let reply = "";
+
+    if (input.includes("balance")) {
+        reply = "Your current account balance is ₹25,000.";
+    }
+    else if (input.includes("transaction")) {
+        reply = "Last transactions: ₹500 debit, ₹2,000 credit.";
+    }
+    else if (input.includes("loan")) {
+        reply = "Available loans: Home Loan, Personal Loan, Education Loan.";
+    }
+    else if (input.includes("branch")) {
+        reply = "Nearest branch: Main Road, Hyderabad (10 AM – 4 PM).";
+    }
+    else {
+        reply = "Sorry, I can help with balance, loans, transactions, or branch info.";
+    }
+
+    chat.innerHTML += "<p><b>Bot:</b> " + reply + "</p>";
+    document.getElementById("userInput").value = "";
+}
+</script>
+
+</body>
+</html>
